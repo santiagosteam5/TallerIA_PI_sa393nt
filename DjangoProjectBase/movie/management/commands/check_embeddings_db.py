@@ -1,14 +1,16 @@
 from django.core.management.base import BaseCommand
 from movie.models import Movie
 import json
+import os
+import numpy as np
 
 class Command(BaseCommand):
     help = 'Modify path of images'
 
     def handle(self, *args, **kwargs):
+  
         items = Movie.objects.all()
-        for item in items:
-            item.image.name = f"movie/images/m_{item.title}.png"
-            item.save()
+        item = items[10]
+        print(item.emb)
         
-        self.stdout.write(self.style.SUCCESS(f'Successfully updated with the illustrations of the movies'))
+        
